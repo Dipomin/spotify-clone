@@ -27,7 +27,7 @@ const LikedContent: React.FC<LikedContentprops> = ({ songs }) => {
   if (songs.length === 0) {
     return (
       <div className="flex flex-col gap-y-2 w-full px-6 text-neutral-400">
-        Aucune musique favoris.
+        Aucune musique favorite.
       </div>
     );
   }

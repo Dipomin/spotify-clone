@@ -10,7 +10,7 @@ const useOnPlay = (songs: Song[]) => {
     const player = usePlayer();
     const subscribeModal = useSubscribeModal();
     const authModal = useAuthModal();
-    const { user, subscription } = useUser();
+    const { subscription, user } = useUser();
 
     const onPlay = (id: string) => {
         if (!user) {
@@ -18,7 +18,7 @@ const useOnPlay = (songs: Song[]) => {
         }
 
         if (!subscription) {
-            return subscribeModal.onOpen
+            return subscribeModal.onOpen();
         }
 
         player.setId(id);

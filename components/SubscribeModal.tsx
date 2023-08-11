@@ -8,6 +8,7 @@ import { useUser } from "@/hooks/useUser";
 import { toast } from "react-hot-toast";
 import { getStripe } from "@/libs/stripeClient";
 import useSubscribeModal from "@/hooks/useSubscribeModal";
+import { postData } from "@/libs/helpers";
 
 interface SubscribeModalProps {
   products: ProductWithPrice[];
@@ -44,11 +45,11 @@ const SubscribeModal: React.FC<SubscribeModalProps> = ({ products }) => {
 
     if (subscription) {
       setPriceIdLoading(undefined);
-      return toast("Vous êtyes déjà abonné");
+      return toast("Vous êtes déjà abonné");
     }
 
     try {
-      const { sessionsId } = await postData({
+      const { sessionId } = await postData({
         url: "/api/create-checkout-session",
         data: { price },
       });
@@ -62,7 +63,7 @@ const SubscribeModal: React.FC<SubscribeModalProps> = ({ products }) => {
     }
   };
 
-  let content = <div className="text-center">Aucun produit</div>;
+  let content = <div className="text-center">Aucun produit disponible</div>;
 
   if (products.length) {
     content = (
