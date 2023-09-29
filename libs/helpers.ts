@@ -17,9 +17,9 @@ export const postData = async ({
     data
 }: {
     url: string;
-    data?: { price: Price }
+    data?: { price: Price };
 }) => {
-    console.log('POST REQUEST:', url, data);
+    console.log('posting,', url, data);
 
     const res: Response = await fetch(url, {
         method: 'POST',
@@ -29,9 +29,9 @@ export const postData = async ({
     });
 
     if (!res.ok) {
-        console.log('Error in POST', { url, data, res });
+        console.log('Error in postData', { url, data, res });
 
-        throw new Error(res.statusText);
+        throw Error(res.statusText);
     }
 
     return res.json();

@@ -31,7 +31,7 @@ const SubscribeModal: React.FC<SubscribeModalProps> = ({ products }) => {
 
   const onChange = (open: boolean) => {
     if (!open) {
-      subscribeModal.onClose;
+      subscribeModal.onClose();
     }
   };
 
@@ -57,14 +57,12 @@ const SubscribeModal: React.FC<SubscribeModalProps> = ({ products }) => {
       const stripe = await getStripe();
       stripe?.redirectToCheckout({ sessionId });
     } catch (error) {
-      toast.error((error as Error)?.message);
+      return toast.error((error as Error)?.message);
     } finally {
       setPriceIdLoading(undefined);
     }
   };
-
   let content = <div className="text-center">Aucun produit disponible</div>;
-
   if (products.length) {
     content = (
       <div>

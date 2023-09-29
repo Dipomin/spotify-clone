@@ -58,7 +58,7 @@ const AccountContent = () => {
             disabled={loading || isLoading}
             className="w-[300px]"
           >
-            Abonnemnt gratuit
+            Abonnement gratuit
           </Button>
         </div>
       )}
